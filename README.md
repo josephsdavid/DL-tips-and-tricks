@@ -16,8 +16,20 @@ We will list the task, the loss functions you may want to use, and what activati
 
 dropout after relu activation = bad! (talk about probabilities)
 
-## Batch size...
-Talk about batch size as well as relation to learning rate
+## Model tuning procedure
+This is currently my understanding of how to build a good deep learning model in general. Steps in order. For all steps it is assumed that you are taking standard measures against overfitting
+
+### Batch size
+
+Tune this first. Bigger batch sizes mean your model will learn less, while if they are too small, your model will take forever to train AND you will run into either A) overfitting or B) weird things happening to your loss, for example loss and validation loss steadily decreasing when suddenly validation loss explodes. This is because your model is too dependent on the training data! To tune batch size, a good rule of thumb is to start big, and make it smaller and smaller until you run into these issues. Then you make it a little bigger than the threshhold for weird data issues. 
+
+### Network size/complexity
+
+After tuning batch size, you make your network as big/complex as you can until you again run into overfitting issues. How to expand the layers and the depth of the model is TBD
+
+### Learning rate
+
+After this is done, you can adjust the loss curve with the learning rate
 
 ## How many hidden nodes should I put in a layer
 tbd
