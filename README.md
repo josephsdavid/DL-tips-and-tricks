@@ -21,7 +21,7 @@ This is currently my understanding of how to build a good deep learning model in
 
 ### Batch size
 
-Tune this first. Bigger batch sizes mean your model will learn less, while if they are too small, your model will take forever to train AND you will run into either A) overfitting or B) weird things happening to your loss, for example loss and validation loss steadily decreasing when suddenly validation loss explodes. This is because your model is too dependent on the training data! To tune batch size, a good rule of thumb is to start big, and make it smaller and smaller until you run into these issues. Then you make it a little bigger than the threshhold for weird data issues. 
+big batches take less time per epoch, but converge more slowly, and are also more likely to overfit. However, tuning this first is a good idea, as your learning rate is somewhat related. Note for RNNs: tuning batch size may be tricky! Too big or too small and gradients will explode! I typically start big and work my way down, as if you are converging quickly without overfitting with big, fast, batches, you dont need to worry about the slower small batches.
 
 ### Network size/complexity
 
@@ -29,10 +29,11 @@ After tuning batch size, you make your network as big/complex as you can until y
 
 ### Learning rate
 
-After this is done, you can adjust the loss curve with the learning rate
+Once you have decided on a general architecture, make a very small version of it and use that to tune learning rate, the optimal learning rate is independent of model size, so it will make your life (and your computer's life) much easier.
 
-## How many hidden nodes should I put in a layer
-tbd
+## Very helpful resources:
+https://yashuseth.blog/2018/11/26/hyper-parameter-tuning-best-practices-learning-rate-batch-size-momentum-weight-decay/
 
-## How big should I make my network
-tbd
+## Other considerations:
+
+When designing networks, try and think about how easy it is for errors to backpropogate! Combine RNNs by adding them!
